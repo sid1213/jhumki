@@ -1,5 +1,5 @@
 export interface Images {
-  src: string[] | string;
+  src: string[];
 }
 
 export interface SwiperSlideCustomProps {

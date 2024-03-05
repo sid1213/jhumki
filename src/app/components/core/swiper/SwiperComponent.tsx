@@ -1,17 +1,17 @@
-'use client'
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+"use client";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
 
 // import required modules
-import { Autoplay, FreeMode, Navigation } from 'swiper/modules';
+import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 
-import SwiperSlideCustom from './SwiperSlideCustom';
-import { SwiperComponentProps } from '@/app/types/types';
-import { SwiperModule } from 'swiper/types';
+import SwiperSlideCustom from "./SwiperSlideCustom";
+import { SwiperComponentProps } from "@/app/types/types";
+import { SwiperModule } from "swiper/types";
 
 const SwiperComponent: React.FC<SwiperComponentProps> = ({
   swiperSlideData,
@@ -32,16 +32,23 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({
     freeMode: freeMode,
     modules: modules as SwiperModule[],
   };
-  
+
   return (
     <>
       <Swiper {...swiperOptions} className="mySwiper">
         {swiperSlideData.images.map((data, index) => {
+          console.log(data);
           return (
-          <SwiperSlide key={index}>
-            <SwiperSlideCustom {...data} />
-          </SwiperSlide>
-        )})}
+            <SwiperSlide key={index}>
+              <SwiperSlideCustom
+                alt={`${swiperSlideData.alt + index}`}
+                height={swiperSlideData.height}
+                width={swiperSlideData.width}
+                images={[data]}
+              />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </>
   );
